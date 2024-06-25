@@ -14,10 +14,10 @@ parser.add_argument("host", help="the hostname for the awtrix device")
 
 args = parser.parse_args()
 
-awtrix_uri = URITemplate("http://{awtrix_host}{/path=list}{?dir}")
+awtrix_urit = URITemplate("http://{awtrix_host}{/path=list}{?dir}")
 
 with urllib.request.urlopen(
-    awtrix_uri.expand(awtrix_host=args.host, dir="/ICONS")
+    awtrix_urit.expand(awtrix_host=args.host, dir="/ICONS")
 ) as resp:
     body = json.load(resp)
 
