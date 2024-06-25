@@ -4,7 +4,11 @@ import json
 
 from uritemplate import URITemplate
 
-parser = argparse.parser()
+
+parser = argparse.ArgumentParser(
+    prog="awtrix_files",
+    description="Manage AWTRIX 3 device files.",
+)
 
 parser.add_argument("host", help="the hostname for the awtrix device")
 
