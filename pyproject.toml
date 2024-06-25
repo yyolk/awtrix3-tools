@@ -1,0 +1,20 @@
+[project]
+name = "awtrix3-tools"
+description = "Tools for managing an AWTRIX3 Smart Clock."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "uritemplate",
+]
+dynamic = ["version"]
+
+[[project.authors]]
+name = "Joseph Chiocchi"
+email = "joe@yolk.cc"
+
+[tool.pdm.version]
+source = "scm"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
