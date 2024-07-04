@@ -33,6 +33,7 @@ def get_filename_and_bytesio(url) -> (str, BytesIO):
     bo = BytesIO()
     headers, *chunker = download_file_in_chunks(url)
     filetype = mimetypes.guess_extension(headers["content-type"])
+    # TODO: fallback to unique name based off url hash or file chunk hash or header hash
     name = urllib.parse.urlsplit(url).path.split("/")[-1]
     filename = f"{name}{filetype}"
     for chunk in chunker:
