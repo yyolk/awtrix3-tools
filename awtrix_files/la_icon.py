@@ -20,10 +20,10 @@ def get_lametric_icon(icon: int) -> (str, "BytesIO"):
 
 def bytesio_image_to_base64(bo: BytesIO, gif_seek=1) -> str:
     """Utility function for sending an encoded image directly.
-    
+
     Via the docs https://blueforcer.github.io/awtrix3/#/api:
-        	The icon ID or filename (without extension) to display on the app.
-            You can also send a 8x8 jpg as Base64 String
+        The icon ID or filename (without extension) to display on the app.
+        You can also send a 8x8 jpg as Base64 String
     """
     bo.seek(0)
     pil_im = Image.open(bo)
