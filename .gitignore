@@ -197,3 +197,6 @@ tags
 # End of https://www.toptal.com/developers/gitignore/api/python,vim
 .pdm-build
 .pdm-python
+
+*.png
+*.gif
