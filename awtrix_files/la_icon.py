@@ -10,7 +10,7 @@ from uritemplate import URITemplate
 lametric_icon_uri_template = URITemplate("https://developer.lametric.com/content/apps/icon_thumbs{/icon}")
 
 
-def download_file_in_chunks(url: str, chunk_size: int = 1024) -> Iterator[Union[dict, [bytes, ...]]]:
+def download_file_in_chunks(url: str, chunk_size: int = 1024) -> Iterator[Union[dict, bytes, ...]]:
     with urllib.request.urlopen(url) as response:
         yield response.headers
         while True:
