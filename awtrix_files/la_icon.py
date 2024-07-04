@@ -28,6 +28,7 @@ def bytesio_image_to_base64(bo: BytesIO, gif_seek=1) -> str:
     bo.seek(0)
     pil_im = Image.open(bo)
     if pil_im.format == "GIF":
+        # Take the single frame to represent the gif
         pil_im.seek(pil_im.tell() + gif_seek)
     pil_im = pil_im.convert("RGB")
     newb = BytesIO()
