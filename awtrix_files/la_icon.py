@@ -29,6 +29,7 @@ def bytesio_image_to_base64(bo: BytesIO, gif_seek=1) -> str:
     im_bytes = newb.getvalue()
     return base64.b64encode(im_bytes).decode()
 
+
 if __name__ == "__main__":
     filename, bo = get_lametric_icon(66)
     print(f"{filename=}")
