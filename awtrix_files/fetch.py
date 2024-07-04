@@ -1,9 +1,14 @@
-from io import BytesIO
+import mimetypes
 import urllib.request
+import urllib.parse
+
+from io import BytesIO
 from typing import Iterator, Union
 
 
-def download_file_in_chunks(url: str, chunk_size: int = 1024) -> Iterator[Union[dict, bytes, ...]]:
+def download_file_in_chunks(
+    url: str, chunk_size: int = 1024
+) -> Iterator[Union[dict, bytes, ...]]:
     with urllib.request.urlopen(url) as response:
         # Yield the headers first
         yield response.headers
@@ -22,3 +27,14 @@ def save_bytesio_to_file(bo: BytesIO, filename: str):
     # Write the file to filename
     with open(filename, "wb") as fp:
         fp.write(bo.read())
+
+
+def get_filename_and_bytesio(url) -> (str, BytesIO):
+    bo = BytesIO()
+    headers, *chunker = download_file_in_chunks(url)
+    filetype = mimetypes.guess_extension(headers["content-type"])
+    name = urllib.parse.urlsplit(url).path.split("/")[-1]
+    filename = f"{name}{filetype}"
+    for chunk in chunker:
+        bo.write(chunk)
+    return filename, bo
