@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:7f60bd1408f4d5b559dcfaf8784bcaf76c6a4501e5288278a65c8975ef09d96a"
+content_hash = "sha256:a02412ef7121262fd7a02689c8f1c10a830aec866211303720aac61d0cada7e3"
 
 [[package]]
 name = "pillow"

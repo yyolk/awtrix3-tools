@@ -1,8 +1,6 @@
 import argparse
-import urllib.request
-import json
 
-from uritemplate import URITemplate
+from awtrix_files.list import list_icons
 
 
 parser = argparse.ArgumentParser(
@@ -14,11 +12,7 @@ parser.add_argument("host", help="the hostname for the awtrix device")
 
 args = parser.parse_args()
 
-awtrix_uri_template = URITemplate("http://{awtrix_host}{/path=list}{?dir}")
 
-with urllib.request.urlopen(
-    awtrix_uri_template.expand(awtrix_host=args.host, dir="/ICONS")
-) as resp:
-    body = json.load(resp)
+body = list_icons(args.host)
 
 print(body)

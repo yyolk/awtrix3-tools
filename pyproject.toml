@@ -2,7 +2,7 @@
 name = "awtrix3-tools"
 description = "Tools for managing an AWTRIX3 Smart Clock."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
     "uritemplate",
     "pillow",
