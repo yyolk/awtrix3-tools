@@ -8,7 +8,7 @@ from typing import Iterator, Union
 
 def download_file_in_chunks(
     url: str, chunk_size: int = 1024
-) -> Iterator[Union[dict, bytes, ...]]:
+) -> Iterator[Union[dict, bytes, ...]]:  # type: ignore
     with urllib.request.urlopen(url) as response:
         # Yield the headers first
         yield response.headers
