@@ -8,6 +8,7 @@ from uritemplate import URITemplate
 
 awtrix_uri_template = URITemplate("http://{awtrix_host}{/path=list}{/filename}{?dir}")
 
+
 @dataclass
 class Icon:
     name: str
@@ -25,8 +26,16 @@ def list_icons(host, dir_="/ICONS") -> list[Icon]:
     body = _list(host, dir_)
     icons = []
     for icon in body:
-        icons.append(Icon(name=icon["name"], path=awtrix_uri_template.expand(awtrix_host=host, path=dir_, filename=icon["name"])))
+        icons.append(
+            Icon(
+                name=icon["name"],
+                path=awtrix_uri_template.expand(
+                    awtrix_host=host, path="ICONS", filename=icon["name"]
+                ),
+            )
+        )
     return icons
+
 
 def list_melodies(host, dir_="/MELODIES") -> list[dict[str, str]]:
     return _list(host, dir_)
