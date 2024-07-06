@@ -16,3 +16,15 @@ def _list(host, dir_) -> list[dict[str, str]]:
 
 def list_icons(host, dir_="/ICONS") -> list[dict[str, str]]:
     return _list(host, dir_)
+
+
+def list_melodies(host, dir_="/MELODIES") -> list[dict[str, str]]:
+    return _list(host, dir_)
+
+
+def list_palettes(host, dir_="/PALETTES") -> list[dict[str, str]]:
+    return _list(host, dir_)
+
+
+def list_customapps(host, dir_="/CUSTOMAPPS") -> list[dict[str, str]]:
+    return _list(host, dir_)
