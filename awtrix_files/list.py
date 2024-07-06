@@ -23,18 +23,15 @@ def _list(host, dir_) -> list[dict[str, str]]:
 
 
 def list_icons(host, dir_="/ICONS") -> list[Icon]:
-    body = _list(host, dir_)
-    icons = []
-    for icon in body:
-        icons.append(
-            Icon(
-                name=icon["name"],
-                path=awtrix_uri_template.expand(
-                    awtrix_host=host, path="ICONS", filename=icon["name"]
-                ),
-            )
+    return [
+        Icon(
+            name=icon["name"],
+            path=awtrix_uri_template.expand(
+                awtrix_host=host, path="ICONS", filename=icon["name"]
+            ),
         )
-    return icons
+        for icon in _list(host, dir_)
+    ]
 
 
 def list_melodies(host, dir_="/MELODIES") -> list[dict[str, str]]:
