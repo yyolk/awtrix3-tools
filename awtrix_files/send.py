@@ -12,15 +12,15 @@ import uuid
 from io import BytesIO
 
 
-def post_multipart(url, bo: BytesIO, file_name: str):
+def post_multipart(url, bo: BytesIO, filename: str):
     # URL="http://$IP_ADDRESS/edit"
-    # curl -X POST -F "file=@$TEMP_FILE;filename=/ICONS/$FILE_NAME" "$URL"
+    # curl -X POST -F "file=@$TEMP_FILE;filename=/ICONS/$filename" "$URL"
     #                         ^-- bytes          ^
     #                                            |
     #                                            \- destination filepath
 
     # The file to be uploaded
-    file_path = f"/ICONS/{file_name}"
+    file_path = f"/ICONS/{filename}"
 
     # Generate a boundary string
     boundary = uuid.uuid4().hex
@@ -30,7 +30,7 @@ def post_multipart(url, bo: BytesIO, file_name: str):
     file_content = bo.getvalue()
 
     # Determine the file's MIME type
-    mime_type = mimetypes.guess_type(file_name)[0]  # or 'application/octet-stream'
+    mime_type = mimetypes.guess_type(filename)[0]  # or 'application/octet-stream'
 
     # Create the multipart/form-data body
     data = [
