@@ -29,8 +29,8 @@ def _list(host, dir_) -> list[dict[str, str]]:
         return json.load(resp)
 
 
-def list_icons(host, dir_="/ICONS") -> list[Icon]:
-    return [
+def list_icons(host, dir_="/ICONS") -> set[Icon]:
+    return {
         Icon(
             name=icon["name"],
             path=ada_url.URL(
@@ -40,7 +40,7 @@ def list_icons(host, dir_="/ICONS") -> list[Icon]:
             ).pathname,
         )
         for icon in _list(host, dir_)
-    ]
+    }
 
 
 def list_melodies(host, dir_="/MELODIES") -> list[dict[str, str]]:
