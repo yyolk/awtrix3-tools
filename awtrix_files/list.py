@@ -3,16 +3,23 @@ import json
 
 from dataclasses import dataclass
 
+import ada_url
+
 from uritemplate import URITemplate
 
 
 awtrix_uri_template = URITemplate("http://{awtrix_host}{/path=list}{/filename}{?dir}")
 
 
-@dataclass
+@dataclass(frozen=True)
 class Icon:
     name: str
     path: str
+
+@dataclass(frozen=True)
+class HostIcon:
+    host: str
+    icon: Icon
 
 
 def _list(host, dir_) -> list[dict[str, str]]:
@@ -26,9 +33,11 @@ def list_icons(host, dir_="/ICONS") -> list[Icon]:
     return [
         Icon(
             name=icon["name"],
-            path=awtrix_uri_template.expand(
-                awtrix_host=host, path="ICONS", filename=icon["name"]
-            ),
+            path=ada_url.URL(
+                awtrix_uri_template.expand(
+                    awtrix_host=host, path="ICONS", filename=icon["name"]
+                )
+            ).pathname,
         )
         for icon in _list(host, dir_)
     ]
