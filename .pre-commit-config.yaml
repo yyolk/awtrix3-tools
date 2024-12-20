@@ -1,0 +1,48 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+default_install_hook_types:
+  - post-checkout
+  - post-merge
+  - pre-push
+default_stages:
+  - manual
+  - pre-push
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-shebang-scripts-are-executable
+      - id: check-vcs-permalinks
+      - id: check-symlinks
+      - id: check-docstring-first
+      - id: check-toml
+      - id: check-yaml
+      - id: destroyed-symlinks
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: name-tests-test
+      - id: sort-simple-yaml
+        files: .pre-commit-config.yaml
+  - repo: https://github.com/pdm-project/pdm
+    rev: 2.21.0
+    hooks:
+      - id: pdm-sync
+      - id: pdm-lock-check
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: ruff-format
+        entry: pdm run python -m ruff format
+        language: system
+        types_or:
+          - python
+          - pyi
+        require_serial: true
+      - id: toml-sort
+        name: toml-sort
+        entry: pdm run toml-sort
+        language: system
+        types:
+          - toml

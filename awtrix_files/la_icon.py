@@ -13,18 +13,35 @@ lametric_icon_uri_template = URITemplate(
 )
 
 
-def get_lametric_icon(icon: int) -> tuple[str, "BytesIO"]:
+def get_lametric_icon(icon: int) -> tuple[str, BytesIO]:
+    """Get an icon from LAMetric's icon index.
+
+    Args:
+        icon: The icon number to fetch.
+
+    Returns:
+        str: The icon's filename (the number with extension).
+        BytesIO: The seekable icon content.
+    """
     url = lametric_icon_uri_template.expand(icon=icon)
     return get_filename_and_bytesio(url)
 
 
 def bytesio_image_to_base64(bo: BytesIO, gif_seek=1) -> str:
-    """Utility function for sending an encoded image directly.
+    """Utility function for sending as Base64 encoded.
 
     Via the docs https://blueforcer.github.io/awtrix3/#/api:
         The icon ID or filename (without extension) to display on the app.
         You can also send a 8x8 jpg as Base64 String
+
+    Args:
+        bo: The BytesIO (filestream) to send.
+        gif_seek: The frame to use from a gif image. Defaults to 1.
+
+    Returns:
+        The Base64 encoded image to be used to send for sending attached to a message payload.
     """
+    # rewind the tape
     bo.seek(0)
     pil_im = Image.open(bo)
     if pil_im.format == "GIF":

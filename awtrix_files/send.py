@@ -1,24 +1,30 @@
-"""
-from awtrix_files.send import post_multipart
-from awtrix_files.la_icon import get_lametric_icon
-
-filename, bo = bet_lametric_icon(66)
-resp = post_multipart("https://webhook.site/6c6d7caf-aba6-43b2-9cb8-41158108c727", bo, filename)
-"""
-import urllib.request
 import mimetypes
+import urllib.request
 import uuid
 
 from io import BytesIO
 
 
-def post_multipart(url, bo: BytesIO, filename: str):
-    # URL="http://$IP_ADDRESS/edit"
-    # curl -X POST -F "file=@$TEMP_FILE;filename=/ICONS/$filename" "$URL"
-    #                         ^-- bytes          ^
-    #                                            |
-    #                                            \- destination filepath
+def post_multipart(url, bo: BytesIO, filename: str) -> bytes:
+    """Utility for uploading files using AWTRIX 3's embededd web server.
 
+    The AWTRIX 3's embedded webserver will accept POST requests.
+    In the future it could also accept PUT requests, which would be the appropriate method to use.
+
+    Notes:
+        Here's the breakdown of this function using curl as a reference.
+        URL="http://$IP_ADDRESS/edit"
+        curl -X POST -F "file=@$TEMP_FILE;filename=/ICONS/$filename" "$URL"
+                                ^-- bytes          ^
+                                                   |- destination filepath
+    Args:
+        url: The destination URL to POST the multipart form to.
+        bo: The BytesIO object (seekable file) to send.
+        filename: The destination filename to save upload as.
+
+    Returns:
+        The response bytes from the HTTP POST request.
+    """
     # The file to be uploaded
     file_path = f"/ICONS/{filename}"
 
