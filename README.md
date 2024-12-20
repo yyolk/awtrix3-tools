@@ -1,5 +1,5 @@
 # awtrix3-tools
-Tools for managing an AWTRIX 3 Smart Clock
+Tools for managing an [AWTRIX 3 Smart Clock][awtrix3-homepage].
 
 # Notes
 
@@ -27,3 +27,5 @@ In [69]: def save_icons_directly(icons):
 In [70]: save_icons_directly(missing_icons)
 ```
                                        
+
+[awtrix3-homepage]: https://blueforcer.github.io/awtrix3/ "AWTRIX 3"
