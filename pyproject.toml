@@ -1,31 +1,22 @@
 [project]
 name = "awtrix3-tools"
+dependencies = [
+  "ada-url>=1.15.0",
+  "pillow",
+  "uritemplate",
+]
 description = "Tools for managing an AWTRIX3 Smart Clock."
+dynamic = ["version"]
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "uritemplate",
-    "pillow",
-    "ada-url>=1.15.0",
-]
-dynamic = ["version"]
 
 [[project.authors]]
-name = "Joseph Chiocchi"
 email = "joe@yolk.cc"
+name = "Joseph Chiocchi"
 
-[tool.ruff]
-fix = true
-
-[tool.ruff.lint.isort]
-lines-after-imports = 2
-lines-between-types = 1
-
-[tool.ruff.lint.pydocstyle]
-convention = "google"
-
-[tool.pdm.version]
-source = "scm"
+[build-system]
+build-backend = "pdm.backend"
+requires = ["pdm-backend"]
 
 [tool.pdm.dev-dependencies]
 lint = [
@@ -37,9 +28,18 @@ pre-commit = [
   "pre-commit",
 ]
 
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
+[tool.pdm.version]
+source = "scm"
+
+[tool.ruff]
+fix = true
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+lines-between-types = 1
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.tomlsort]
 all = false

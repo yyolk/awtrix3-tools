@@ -34,7 +34,7 @@ repos:
     hooks:
       - id: ruff-format
         name: ruff-format
-        entry: pdm run python -m ruff format --force-exclude
+        entry: pdm run python -m ruff format
         language: system
         types_or:
           - python
