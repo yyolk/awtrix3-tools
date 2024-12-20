@@ -16,6 +16,7 @@ class Icon:
     name: str
     path: str
 
+
 @dataclass(frozen=True)
 class HostIcon:
     host: str
@@ -30,17 +31,20 @@ def _list(host, dir_) -> list[dict[str, str]]:
 
 
 def list_icons(host, dir_="/ICONS") -> set[Icon]:
-    return {
-        Icon(
-            name=icon["name"],
-            path=ada_url.URL(
-                awtrix_uri_template.expand(
-                    awtrix_host=host, path="ICONS", filename=icon["name"]
-                )
-            ).pathname,
+    result_set = set()
+    for icon in _list(host, dir):
+        url = ada_url.URL(
+            awtrix_uri_template.expand(
+                awtrix_host=host, path="ICONS", filename=icon["name"]
+            )
         )
-        for icon in _list(host, dir_)
-    }
+        result_set.add(
+            Icon(
+                name=icon["name"],
+                path=url.pathname,
+            )
+        )
+    return result_set
 
 
 def list_melodies(host, dir_="/MELODIES") -> list[dict[str, str]]:
