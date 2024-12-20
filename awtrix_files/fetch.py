@@ -1,6 +1,6 @@
 import mimetypes
-import urllib.request
 import urllib.parse
+import urllib.request
 
 from io import BytesIO
 from typing import Iterator, Union
@@ -17,7 +17,7 @@ def download_file_in_chunks(
 
     Yields:
         Always yields the headers first, then all subsequent yields are the chunks of the resource.
-    """    
+    """
     with urllib.request.urlopen(url) as response:
         # Yield the headers first
         yield response.headers
@@ -36,7 +36,7 @@ def save_bytesio_to_file(bo: BytesIO, filename: str):
     Args:
         bo: BytesIO (fp-like) to write.
         filename: The filename to write to, can also be a path.
-    """    
+    """
     # Rewind the tape
     bo.seek(0)
     # Write the file to filename
@@ -53,7 +53,7 @@ def get_filename_and_bytesio(url) -> tuple[str, BytesIO]:
     Returns:
         str: The filename of the resource that was fetched (extracted from the URL).
         BytesIO: The contents of the file in a seekable format.
-    """    
+    """
     bo = BytesIO()
     headers, *chunker = download_file_in_chunks(url)
     filetype = mimetypes.guess_extension(headers["content-type"])
