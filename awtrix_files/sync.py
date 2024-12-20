@@ -1,4 +1,8 @@
-"""Holds syncing the files of one awtrix3 to another awtrix3."""
+"""Holds syncing the files of one awtrix3 to another awtrix3.
+
+TODO:
+    - use this for holding the logic for syncing
+"""
 
 from awtrix_files.list import Icon, list_icons
 
