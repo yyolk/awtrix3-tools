@@ -29,7 +29,7 @@ def save_bytesio_to_file(bo: BytesIO, filename: str):
         fp.write(bo.read())
 
 
-def get_filename_and_bytesio(url) -> (str, BytesIO):
+def get_filename_and_bytesio(url) -> tuple[str, BytesIO]:
     bo = BytesIO()
     headers, *chunker = download_file_in_chunks(url)
     filetype = mimetypes.guess_extension(headers["content-type"])
