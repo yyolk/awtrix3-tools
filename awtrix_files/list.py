@@ -24,6 +24,17 @@ class HostIcon:
 
 
 def _list(host, dir_) -> list[dict[str, str]]:
+    """Main function for listing.
+
+    All files in AWTRIX are served through JSON responses at certain paths.
+
+    Args:
+        host: The AWTRIX 3 host
+        dir_: The directory to list
+
+    Returns:
+        A list of key value pairs that are files at the specified directory (path).
+    """    
     with urllib.request.urlopen(
         awtrix_uri_template.expand(awtrix_host=host, dir=dir_)
     ) as resp:
