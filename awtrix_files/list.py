@@ -32,7 +32,7 @@ def _list(host, dir_) -> list[dict[str, str]]:
 
 def list_icons(host, dir_="/ICONS") -> set[Icon]:
     result_set = set()
-    for icon in _list(host, dir):
+    for icon in _list(host, dir_):
         url = ada_url.URL(
             awtrix_uri_template.expand(
                 awtrix_host=host, path="ICONS", filename=icon["name"]
