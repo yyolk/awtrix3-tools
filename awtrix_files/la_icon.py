@@ -14,6 +14,15 @@ lametric_icon_uri_template = URITemplate(
 
 
 def get_lametric_icon(icon: int) -> tuple[str, "BytesIO"]:
+    """Get an icon from LAMetric's icon index.
+
+    Args:
+        icon: The icon number to fetch.
+
+    Returns:
+        str: The icon's filename (the number with extension).
+        BytesIO: The seekable icon content.
+    """    
     url = lametric_icon_uri_template.expand(icon=icon)
     return get_filename_and_bytesio(url)
 
