@@ -14,6 +14,16 @@ dynamic = ["version"]
 name = "Joseph Chiocchi"
 email = "joe@yolk.cc"
 
+[tool.ruff]
+fix = true
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+lines-between-types = 1
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
 [tool.pdm.version]
 source = "scm"
 
