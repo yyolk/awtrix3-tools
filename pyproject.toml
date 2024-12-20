@@ -27,6 +27,16 @@ convention = "google"
 [tool.pdm.version]
 source = "scm"
 
+[tool.pdm.dev-dependencies]
+lint = [
+  "pyright",
+  "ruff",
+  "toml-sort",
+]
+pre-commit = [
+  "pre-commit",
+]
+
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
