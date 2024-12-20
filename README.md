@@ -3,6 +3,15 @@ Tools for managing an [AWTRIX 3 Smart Clock][awtrix3-homepage].
 
 # Notes
 
+```py
+from awtrix_files.send import post_multipart
+from awtrix_files.la_icon import get_lametric_icon
+
+filename, bo = bet_lametric_icon(66)
+resp = post_multipart("https://webhook.site/6c6d7caf-aba6-43b2-9cb8-41158108c727", bo, filename)
+
+```
+
 ```
 from awtrix_files.fetch import get_filename_and_bytesio, save_bytesio_to_file
 office_url = awtrix_uri_template.expand(awtrix_host=office_host, path="")

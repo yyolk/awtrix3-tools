@@ -1,12 +1,5 @@
-"""
-from awtrix_files.send import post_multipart
-from awtrix_files.la_icon import get_lametric_icon
-
-filename, bo = bet_lametric_icon(66)
-resp = post_multipart("https://webhook.site/6c6d7caf-aba6-43b2-9cb8-41158108c727", bo, filename)
-"""
-import urllib.request
 import mimetypes
+import urllib.request
 import uuid
 
 from io import BytesIO
