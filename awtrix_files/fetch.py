@@ -3,12 +3,12 @@ import urllib.parse
 import urllib.request
 
 from io import BytesIO
-from typing import Iterator, Union
+from typing import Iterator
 
 
 def download_file_in_chunks(
     url: str, chunk_size: int = 1024
-) -> Iterator[Union[dict[str], bytes]]:
+) -> Iterator[dict[str, str] | bytes]:
     """Download a file with HTTP GET given a URL in chunks.
 
     Args:
@@ -56,10 +56,10 @@ def get_filename_and_bytesio(url) -> tuple[str, BytesIO]:
     """
     bo = BytesIO()
     headers, *chunker = download_file_in_chunks(url)
-    filetype = mimetypes.guess_extension(headers["content-type"])
+    filetype = mimetypes.guess_extension(headers["content-type"]) # type: ignore
     # TODO: fallback to unique name based off url hash or file chunk hash or header hash
     name = urllib.parse.urlsplit(url).path.split("/")[-1]
     filename = f"{name}{filetype}"
     for chunk in chunker:
-        bo.write(chunk)
+        bo.write(chunk) # type: ignore
     return filename, bo
