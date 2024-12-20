@@ -42,7 +42,7 @@ def list_icons(host, dir_="/ICONS") -> set[Icon]:
             name=icon["name"],
             path=url.pathname,
         )
-        result_set.add(HostIcon(host, icon))
+        result_set.add(icon)
     return result_set
 
 
