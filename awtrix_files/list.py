@@ -1,5 +1,5 @@
-import urllib.request
 import json
+import urllib.request
 
 from dataclasses import dataclass
 
@@ -34,7 +34,7 @@ def _list(host, dir_) -> list[dict[str, str]]:
 
     Returns:
         A list of key value pairs that are files at the specified directory (path).
-    """    
+    """
     with urllib.request.urlopen(
         awtrix_uri_template.expand(awtrix_host=host, dir=dir_)
     ) as resp:
