@@ -38,12 +38,11 @@ def list_icons(host, dir_="/ICONS") -> set[Icon]:
                 awtrix_host=host, path="ICONS", filename=icon["name"]
             )
         )
-        result_set.add(
-            Icon(
-                name=icon["name"],
-                path=url.pathname,
-            )
+        icon = Icon(
+            name=icon["name"],
+            path=url.pathname,
         )
+        result_set.add(HostIcon(host, icon))
     return result_set
 
 
