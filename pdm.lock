@@ -3,9 +3,12 @@
 
 [metadata]
 groups = ["default"]
-strategy = ["cross_platform", "inherit_metadata"]
-lock_version = "4.4.1"
-content_hash = "sha256:c7d1f2a204864993146f0ee24d11f0c701a2082afe43c86d9093c730cc47a90c"
+strategy = ["inherit_metadata"]
+lock_version = "4.5.0"
+content_hash = "sha256:7e256e0a3b7b34c379a25cecd162185ec5e20ca48932bcc82de477cf17ba2f54"
+
+[[metadata.targets]]
+requires_python = ">=3.12"
 
 [[package]]
 name = "ada-url"
