@@ -27,13 +27,16 @@
         "github.codespaces",
         "github.github-vscode-theme",
         "github.vscode-pull-request-github",
-        "ms-python.black-formatter",
+        // "ms-python.black-formatter",  // we use ruff instead
         "ms-python.debugpy",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "njpwerner.autodocstring",
         "tamasfe.even-better-toml"
-      ]
+      ],
+      "settings": {
+        "python.analysis.typeCheckingMode": "standard"
+      }
     }
   }
 
