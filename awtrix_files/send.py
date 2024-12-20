@@ -16,8 +16,7 @@ def post_multipart(url, bo: BytesIO, filename: str) -> bytes:
         URL="http://$IP_ADDRESS/edit"
         curl -X POST -F "file=@$TEMP_FILE;filename=/ICONS/$filename" "$URL"
                                 ^-- bytes          ^
-                                                   |
-                                                    \- destination filepath
+                                                   |- destination filepath
     Args:
         url: The destination URL to POST the multipart form to.
         bo: The BytesIO object (seekable file) to send.
