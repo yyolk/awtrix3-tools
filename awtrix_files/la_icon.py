@@ -13,7 +13,7 @@ lametric_icon_uri_template = URITemplate(
 )
 
 
-def get_lametric_icon(icon: int) -> (str, "BytesIO"):
+def get_lametric_icon(icon: int) -> tuple[str, "BytesIO"]:
     url = lametric_icon_uri_template.expand(icon=icon)
     return get_filename_and_bytesio(url)
 
