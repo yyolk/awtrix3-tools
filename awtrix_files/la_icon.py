@@ -25,6 +25,7 @@ def bytesio_image_to_base64(bo: BytesIO, gif_seek=1) -> str:
         The icon ID or filename (without extension) to display on the app.
         You can also send a 8x8 jpg as Base64 String
     """
+    # rewind the tape
     bo.seek(0)
     pil_im = Image.open(bo)
     if pil_im.format == "GIF":
